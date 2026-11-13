@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dra. Gabriella Lima | Odontologia e Estética</title>
+  <meta name="description"
+    content="Dra. Gabriella Lima - Estética do sorriso com naturalidade e planejamento. Salvador - BA.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="imagens/perfildra.jpg">
+
+
+  <!-- Open Graph & Social Preview (WhatsApp, Instagram, Facebook, LinkedIn) -->
+  <meta property="og:site_name" content="Dra. Gabriella Lima">
+  <meta property="og:title" content="Dra. Gabriella Lima | Odontologia e Estética">
+  <meta property="og:description" content="Estética do sorriso com naturalidade e planejamento. Salvador - BA.">
+  <meta property="og:url" content="https://gabriellalimadra.vercel.app/">
+  <meta property="og:image" content="https://gabriellalimadra.vercel.app/imagens/dra0.jpg">
+  <meta property="og:image:secure_url" content="https://gabriellalimadra.vercel.app/imagens/dra0.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter / X Card Preview -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dra. Gabriella Lima | Odontologia e Estética">
+  <meta name="twitter:description" content="Estética do sorriso com naturalidade e planejamento. Salvador - BA.">
+  <meta name="twitter:image" content="https://gabriellalimadra.vercel.app/imagens/dra0.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <style>
+    :root {
+      --bg-color: #f7f3ee;
+      --card-bg: #fcf9f4;
+      --card-border: #ecdccb;
+      --brown-evolua: #7d6148;
+      --brown-evolua-hover: #71563f;
+      --text-dark: #221a14;
+      --text-muted: #6e5f53;
+      --text-light-evolua: rgba(255, 255, 255, 0.82);
+      --gold-accent: #bda27e;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      font-family: var(--font-sans);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+      padding: 40px 18px 30px;
+    }
+
+    /* Decorative background curved lines matching design */
+    .bg-curves {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Main Container */
+    .main-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Avatar section */
+    .avatar-wrapper {
+      position: relative;
+      width: 154px;
+      height: 154px;
+      margin: 0 auto 22px;
+      border-radius: 50%;
+      padding: 4px;
+      border: 1.5px solid var(--gold-accent);
+      box-shadow: 0 0 0 2px rgba(189, 162, 126, 0.2), 0 10px 24px rgba(60, 40, 25, 0.08);
+      background: #f8f4ee;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .avatar-wrapper:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 0 3px rgba(189, 162, 126, 0.3), 0 14px 28px rgba(60, 40, 25, 0.12);
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      transform: scale(1.08);
+      display: block;
+    }
+
+    /* Header text */
+    .profile-title {
+      font-family: var(--font-serif);
+      font-size: 2.35rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+
+    .profile-subtitle {
+      font-size: 0.96rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.5;
+      letter-spacing: 0.2px;
+      margin-bottom: 34px;
+    }
+
+    /* Links / Cards Stack */
+    .cards-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    /* Common Card Styling */
+    .link-card {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-height: 86px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Light Card (Cards 1, 3, 4, 5) */
+    .card-light {
+      background-color: var(--card-bg);
+      border: 1.2px solid var(--card-border);
+      box-shadow: 0 3px 12px rgba(100, 75, 50, 0.04);
+    }
+
+    .card-light:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(100, 75, 50, 0.08);
+      border-color: #dfcaa8;
+    }
+
+    .card-group,
+    .card-group:hover {
+      background-color: #000;
+      border-color: #000;
+    }
+
+    .card-group .card-icon-col {
+      border-right-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .card-group .icon-dark,
+    .card-group .action-title,
+    .card-group .action-sub,
+    .card-group .arrow-icon-light {
+      color: #fff;
+    }
+
+    /* Quote Card (Card 1 - not an action link) */
+    .card-quote {
+      cursor: default;
+    }
+
+    .card-quote:hover {
+      transform: none;
+      box-shadow: 0 3px 12px rgba(100, 75, 50, 0.04);
+    }
+
+    /* Evolua Card (Card 2 - High emphasis) */
+    .card-evolua {
+      background-color: var(--brown-evolua);
+      background: linear-gradient(135deg, #82664d 0%, #755940 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 6px 18px rgba(95, 68, 44, 0.22);
+      color: #ffffff;
+    }
+
+    .card-evolua:hover {
+      background: linear-gradient(135deg, #8d7056 0%, #7e6046 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(95, 68, 44, 0.3);
+      color: #ffffff;
+    }
+
+    /* Icon Column (Left) */
+    .card-icon-col {
+      width: 82px;
+      min-width: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: stretch;
+      padding: 12px;
+    }
+
+    .card-light .card-icon-col {
+      border-right: 1px solid var(--card-border);
+    }
+
+    .card-evolua .card-icon-col {
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Card 1 Tooth Icon color */
+    .icon-gold {
+      color: var(--gold-accent);
+    }
+
+    /* Action Cards (Cards 3, 4, 5) Icon color */
+    .icon-dark {
+      color: #3b2c22;
+      font-size: 1.7rem;
+    }
+
+    /* Card Content Column (Center) */
+    .card-content-col {
+      flex: 1;
+      padding: 16px 18px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Card 1: Quote text */
+    .quote-text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.34rem;
+      line-height: 1.25;
+      font-weight: 400;
+      color: #5c4738;
+    }
+
+    /* Card 2: Evolua text elements */
+    .evolua-label {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--text-light-evolua);
+      margin-bottom: 2px;
+    }
+
+    .evolua-title {
+      font-family: var(--font-serif);
+      font-size: 1.48rem;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 2px;
+    }
+
+    .evolua-tagline {
+      font-family: var(--font-sans);
+      font-size: 0.58rem;
+      font-weight: 400;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    /* Action Card Texts (Cards 3, 4, 5) */
+    .action-title {
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 3px;
+    }
+
+    .action-sub {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .action-handle {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+      color: var(--text-muted);
+    }
+
+    /* Arrow Column (Right) */
+    .card-arrow-col {
+      width: 52px;
+      min-width: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 8px;
+      transition: transform 0.25s ease;
+    }
+
+    .link-card:not(.card-quote):hover .card-arrow-col {
+      transform: translateX(4px);
+    }
+
+    .arrow-icon-light {
+      color: #7b6a5b;
+    }
+
+    .arrow-icon-white {
+      color: #ffffff;
+    }
+
+    /* Footer Location Section */
+    .footer-location {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+      padding-top: 6px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.4px;
+    }
+
+    .footer-line {
+      width: 44px;
+      height: 1px;
+      background: #dfcfbd;
+    }
+
+    .footer-pin {
+      color: var(--gold-accent);
+      font-size: 0.95rem;
+    }
+
+    .footer-pipe {
+      color: #dfcfbd;
+      font-weight: 300;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      body {
+        padding: 30px 14px 24px;
+      }
+
+      .profile-title {
+        font-size: 2.1rem;
+      }
+
+      .profile-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 26px;
+      }
+
+      .card-icon-col {
+        width: 72px;
+        min-width: 72px;
+      }
+
+      .quote-text {
+        font-size: 1.2rem;
+      }
+
+      .evolua-title {
+        font-size: 1.3rem;
+      }
+
+      .evolua-tagline {
+        font-size: 0.54rem;
+        letter-spacing: 0.5px;
+      }
+
+      .card-arrow-col {
+        width: 42px;
+        min-width: 42px;
+        padding-right: 4px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Decorative subtle background curves -->
+  <svg class="bg-curves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" preserveAspectRatio="none">
+    <!-- Top right organic curves -->
+    <path d="M 850 0 C 860 220, 1020 340, 1200 360" fill="none" stroke="#dfcfbd" stroke-width="1.2" opacity="0.8" />
+    <path d="M 960 0 C 975 160, 1080 250, 1200 270" fill="none" stroke="#ebdccb" stroke-width="1" opacity="0.6" />
+    <!-- Bottom left organic curves -->
+    <path d="M 0 880 C 180 890, 380 980, 520 1200" fill="none" stroke="#dfcfbd" stroke-width="1.2" opacity="0.8" />
+    <path d="M 0 940 C 140 950, 310 1030, 420 1200" fill="none" stroke="#ebdccb" stroke-width="1" opacity="0.6" />
+  </svg>
+
+  <main class="main-container">
+
+    <!-- Avatar -->
+    <div class="avatar-wrapper">
+      <img src="imagens/perfildra.jpg" alt="Dra. Gabriella Lima" class="avatar-img"
+        onerror="if(!this.dataset.triedBackup){this.dataset.triedBackup='1';this.src='imagens/dra-perfil.jpg';}else if(!this.dataset.triedPng){this.dataset.triedPng='1';this.src='imagens/dra.png';}">
+    </div>
+
+    <!-- Title & Tagline -->
+    <h1 class="profile-title">Dra. Gabriella Lima</h1>
+    <p class="profile-subtitle">
+      Estética do sorriso com naturalidade<br>e planejamento
+    </p>
+
+    <!-- Cards Stack -->
+    <div class="cards-stack">
+
+      <!-- Card 1: Casos Clínicos -->
+      <a href="index.html" class="link-card card-light" id="btn-casos-clinicos"
+        title="Casos & Resultados | Dra. Gabriella Lima">
+        <div class="card-icon-col">
+          <!-- Tooth Icon with Sparkle -->
+          <svg class="icon-gold" width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="currentColor"
+            stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Tooth Body -->
+            <path
+              d="M16 6 C13 4, 9 4, 7 7 C5 10, 5.5 13.5, 7 17.5 C8.5 21.5, 10 26.5, 12 26.5 C14 26.5, 14 22.5, 16 22.5 C18 22.5, 18 26.5, 20 26.5 C22 26.5, 23.5 21.5, 25 17.5 C26.5 13.5, 27 10, 25 7 C23 4, 19 4, 16 6 Z" />
+            <!-- Sparkle star on upper cusp -->
+            <path d="M21 3 L22 6 L25 7 L22 8 L21 11 L20 8 L17 7 L20 6 Z" fill="currentColor" stroke="none" />
+          </svg>
+        </div>
+        <div class="card-content-col">
+          <p class="quote-text mb-0">
+            Seu sorriso planejado<br>para valorizar a sua essência.
+          </p>
+        </div>
+        <div class="card-arrow-col">
+          <svg class="arrow-icon-light" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="m13 6 6 6-6 6" />
+          </svg>
+        </div>
+      </a>
+
+    
+
+      <!-- Card 3: Agende sua consulta via WhatsApp -->
+      <a href="https://wa.me/557192762533?text=Ol%C3%A1%2C%20Dra.%20Gabriella!%20Gostaria%20de%20agendar%20uma%20consulta."
+        target="_blank" rel="noopener noreferrer" class="link-card card-light" id="btn-whatsapp"
+        title="Agende sua consulta via WhatsApp">
+        <div class="card-icon-col">
+          <i class="bi bi-whatsapp icon-dark"></i>
+        </div>
+        <div class="card-content-col">
+          <span class="action-title">AGENDE SUA CONSULTA</span>
+          <span class="action-sub">VIA WHATSAPP</span>
+        </div>
+        <div class="card-arrow-col">
+          <svg class="arrow-icon-light" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="m13 6 6 6-6 6" />
+          </svg>
+        </div>
+      </a>
+
+        <!-- Card GRUPO -->
+                 <a href="https://chat.whatsapp.com/DxSRy2fU5t4BqfUBQ3HazV?s=cl&p=i&mlu=4&ilr=4&iam=2"
+        target="_blank" rel="noopener noreferrer" class="link-card card-light card-group" id="btn-whatsapp"
+        title="Agende sua consulta via WhatsApp">
+        <div class="card-icon-col">
+          <i class="bi bi-whatsapp icon-dark"></i>
+        </div>
+        <div class="card-content-col">
+          <span class="action-title">GRUPO EXCLUSIVO</span>
+          <span class="action-sub">BLACK FRIDAY</span>
+        </div>
+        <div class="card-arrow-col">
+          <svg class="arrow-icon-light" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="m13 6 6 6-6 6" />
+          </svg>
+        </div>
+      </a>
+
+      <!-- Card 4: Siga no Instagram -->
+      <a href="https://www.instagram.com/dra.gabriellalima_/" target="_blank" rel="noopener noreferrer"
+        class="link-card card-light" id="btn-instagram" title="Siga no Instagram">
+        <div class="card-icon-col">
+          <i class="bi bi-instagram icon-dark"></i>
+        </div>
+        <div class="card-content-col">
+          <span class="action-title">SIGA NO INSTAGRAM</span>
+          <span class="action-handle">@dra.gabriellalima_</span>
+        </div>
+        <div class="card-arrow-col">
+          <svg class="arrow-icon-light" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="m13 6 6 6-6 6" />
+          </svg>
+        </div>
+      </a>
+
+      <!-- Card 5: Avalie a clínica no Google -->
+      <a href="https://www.google.com/maps/place/Dra.+Gabriella+Lima+De+Oliveira+,+Dentista./@-12.9195969,-38.3583299,17z/data=!4m15!1m8!3m7!1s0x716178a2325ce1d:0xe8530be1abb438ef!2sDra.+Gabriella+Lima+De+Oliveira+,+Dentista.!8m2!3d-12.9195969!4d-38.355755!10e1!16s%2Fg%2F11xw7gnf9_!3m5!1s0x716178a2325ce1d:0xe8530be1abb438ef!8m2!3d-12.9195969!4d-38.355755!16s%2Fg%2F11xw7gnf9_?entry=ttu&g_ep=EgoyMDI2MTAxOS4wIKXMDSoASAFQAw%3D%3D"
+        target="_blank" rel="noopener noreferrer" class="link-card card-light" id="btn-avaliar-clinica"
+        title="Avalie a clínica no Google">
+        <div class="card-icon-col">
+          <i class="bi bi-google icon-dark"></i>
+        </div>
+        <div class="card-content-col">
+          <span class="action-title">AVALIE A CLÍNICA</span>
+          <span class="action-sub">NO GOOGLE</span>
+        </div>
+        <div class="card-arrow-col">
+          <svg class="arrow-icon-light" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="m13 6 6 6-6 6" />
+          </svg>
+        </div>
+      </a>
+
+
+
+    </div>
+
+    <!-- Location Footer -->
+    <footer class="footer-location">
+      <div class="footer-line"></div>
+      <i class="bi bi-geo-alt-fill footer-pin"></i>
+      <span>Salvador - BA</span>
+      <span class="footer-pipe">|</span>
+      <span>Hangar Business Park</span>
+      <div class="footer-line"></div>
+    </footer>
+
+  </main>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
